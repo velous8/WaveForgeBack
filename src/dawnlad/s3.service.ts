@@ -8,8 +8,8 @@ export class S3Service {
         region: "ru-central1",
         endpoint: "https://storage.yandexcloud.net",
         credentials: {
-            accessKeyId: "YCAJEw01Ftn-1lpg1lo_qgCOf",//////////////////////////////.env
-            secretAccessKey: "YCO0wibsTKFRkkB3g8C42pms7hPdvYctyE7_oHxH",
+            accessKeyId: process.env.YANDEX_STORAGE_ACCESS_KEY!,
+            secretAccessKey: process.env.YANDEX_STORAGE_SECRET_KEY!,
         },
     })
 
