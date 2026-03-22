@@ -12,7 +12,7 @@ export class DownloadController {
 
 
     @Post()
-    createDownloadLink(@Body()  body: { orderIds: string[] }) {
+    createDownloadLink(@Body()  body: { orderIds: string[] }) { ///////для чего???
         return this.downloadService.createDownloadLink(body.orderIds)
     }
 

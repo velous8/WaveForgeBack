@@ -1,6 +1,7 @@
 import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import nodemailer from 'nodemailer';
 import { PrismaService } from 'src/prisma.service';
+
 import { CodeSendDto } from './dto/code-sender.dto';
 import { EmailService } from 'src/email.service';
 
@@ -52,9 +53,9 @@ export class AuthService {
 
         try {    
             await this.email.emailSender(dto.email, "Код подтверждения", code)
-            return {message: `Код подтверждения отправлен на ${dto.email}`};
+            return {message: `Код подтверждения отправлен на ${dto.email}`, send: true};
         } catch (error) {
-            throw new InternalServerErrorException('Ошибка при отправке email');
+            throw new InternalServerErrorException('Ошибка при отправке email' );
         }
     }
 

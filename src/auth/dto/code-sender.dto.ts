@@ -1,9 +1,9 @@
-import { IsEmail, IsUUID } from "class-validator"
+import { IsEmail, IsUUID } from "class-validator";
 
 export class CodeSendDto {
-    @IsEmail()
-    email: string
+    @IsEmail({}, { message: 'Некорректный формат email' })
+    email: string;
     
-    @IsUUID()
-    packId: string
+    @IsUUID('all', { message: 'Некорректный формат packId' })
+    packId: string;
 }

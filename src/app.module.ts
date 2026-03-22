@@ -40,6 +40,7 @@ import { AppService } from './app.service';
 import { AppController } from './app.controller'; 
 import { OrderModule } from './order/order.model';
 import { EmailService } from './email.service';
+import { PackModule } from './pack/pack.module';
 @Module({
   imports: [
     AdminModule, 
@@ -48,7 +49,7 @@ import { EmailService } from './email.service';
     PaymentModule, 
     ConfigModule.forRoot({ isGlobal: true }), 
     DownloadModule, 
-    
+    PackModule
   ],
   controllers: [AppController],
   providers: [

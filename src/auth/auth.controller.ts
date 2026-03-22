@@ -6,7 +6,7 @@ import { CodeSendDto } from "./dto/code-sender.dto";
 export class AuthController {
     constructor(private readonly authService: AuthService) {}
 
-    @Post('code-generate')
+    @Post('code-generate')//для генерации кода НУЖЕН packID так как идет проверка на повтор заказа
     codeSender(@Body() dto: CodeSendDto){
         return this.authService.codeSender(dto)
     }

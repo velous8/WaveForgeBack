@@ -35,7 +35,7 @@ export class AppService {
             description: order.description
         })
 
-        return yooKassaPayment
+        return yooKassaPayment.confirmation
     }
 
     async relink(dto: RelinkDto) {
@@ -55,5 +55,6 @@ export class AppService {
         }
 
         await this.email.emailSender(dto.email, "Relink", urls.join())
+        return {message: 'Ссылки отправлены повторно'}
     }
 }
