@@ -8,7 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
     app.enableCors({
-    origin: 'http://localhost:8080', // или '*' для всех
+    origin: 'https://waveforgefront.onrender.com/', // или '*' для всех
     credentials: true,
   });
 

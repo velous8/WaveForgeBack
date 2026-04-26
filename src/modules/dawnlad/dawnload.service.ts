@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { createHash, randomUUID } from 'crypto';
-import { PrismaService } from 'src/prisma.service';
-import { S3Service } from './s3.service';
+import { PrismaService } from 'src/shared/prisma/prisma.service';
+import { S3Service } from '../../shared/storage/s3.service';
 
 
 @Injectable()
@@ -35,7 +35,8 @@ export class DownloadService {
             tokens.map((item) => 
                 this.prisma.downloads.create({
                     data: item.data
-                }))
+                })
+            )
         )
 
         return tokens.map((item) => {

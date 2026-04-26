@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma.service';
-import { YooKassaService } from './yookassa.service';
-import { DownloadService } from 'src/dawnlad/dawnload.service';
-import { EmailService } from 'src/email.service';
+import { PrismaService } from 'src/shared/prisma/prisma.service';
+import { YooKassaService } from '../../shared/yookassa/yookassa.service';
+import { DownloadService } from 'src/modules/dawnlad/dawnload.service';
+import { EmailService } from 'src/shared/email/email.service';
 
 
 @Injectable()

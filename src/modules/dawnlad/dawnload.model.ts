@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 
-import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from 'src/shared/prisma/prisma.service';
 
 import { DownloadService } from './dawnload.service';
-import { S3Service } from './s3.service';
+import { S3Service } from '../../shared/storage/s3.service';
 import { DownloadController } from './dawnload.controller';
 
 

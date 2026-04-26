@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from 'src/shared/prisma/prisma.service';
 import { CreatePackDto } from './dto/create-pack.dto';
 import { UpdatePackDto } from './dto/update-pack.dto';
 
@@ -9,7 +9,7 @@ export class AdminService {
     constructor(private prisma: PrismaService) {}
 
     async getPacks() {
-            return this.prisma.packs.findMany()   
+        return this.prisma.packs.findMany()   
     }
 
     async createPack(dto: CreatePackDto) {

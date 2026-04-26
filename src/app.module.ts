@@ -29,18 +29,18 @@
 
 
 import { Module } from '@nestjs/common';
-import { AdminModule } from './admin/admin.module';
-import { PrismaService } from './prisma.service';
+import { AdminModule } from './modules/admin/admin.module';
+import { PrismaService } from './shared/prisma/prisma.service';
 import { ConfigModule } from '@nestjs/config';
-import { PaymentModule } from './payment/payment.model';
-import { YooKassaService } from './payment/yookassa.service';
-import { DownloadModule } from './dawnlad/dawnload.model';
-import { AuthModule } from './auth/auth.module';
+import { PaymentModule } from './modules/payment/payment.model';
+import { YooKassaService } from './shared/yookassa/yookassa.service';
+import { DownloadModule } from './modules/dawnlad/dawnload.model';
+import { AuthModule } from './modules/auth/auth.module';
 import { AppService } from './app.service';
 import { AppController } from './app.controller'; 
-import { OrderModule } from './order/order.model';
-import { EmailService } from './email.service';
-import { PackModule } from './pack/pack.module';
+import { OrderModule } from './modules/order/order.model';
+import { EmailService } from './shared/email/email.service';
+import { PackModule } from './modules/pack/pack.module';
 @Module({
   imports: [
     AdminModule, 
