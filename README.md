@@ -18,8 +18,6 @@ Backend-часть **Wave Forge** — веб-платформы для прод�
 
 ## Установка
 
-## Установка
-
 ```
 npm install
 npx prisma generate
