@@ -1,98 +1,137 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Wave Forge — Backend API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Backend-часть **Wave Forge** — веб-платформы для продажи музыкальных семплов и sample packs. Сервер отвечает за бизнес-логику приложения, взаимодействие с базой данных, авторизацию пользователей, обработку заказов, интеграцию с платёжной системой и предоставление доступа к цифровым товарам.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Проект разработан с использованием NestJS и TypeScript с модульной архитектурой, ориентированной на разделение ответственности и дальнейшее расширение функциональности.
 
-## Description
+## Основные возможности
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+* **Авторизация пользователей** — вход с подтверждением через email-код.
 
-## Project setup
+* **Каталог товаров** — получение данных о музыкальных sample packs.
 
-```bash
-$ npm install
+* **Управление заказами** — обработка заказов и взаимодействие с соответствующими сервисами.
+
+* **Обработка платежей** — интеграция с YooKassa.
+
+* **Хранение файлов** — взаимодействие с облачным хранилищем Yandex Object Storage.
+
+* **Скачивание цифровых товаров** — предоставление доступа к приобретённым файлам.
+
+* **Конфигурация окружения** — хранение настроек приложения и внешних сервисов в переменных окружения.
+
+## Технологический стек
+
+* **NestJS** — серверный фреймворк и модульная архитектура.
+
+* **TypeScript** — типизация и повышение надёжности кода.
+
+* **PostgreSQL** — реляционная база данных.
+
+* **Prisma** — работа с базой данных и управление схемой.
+
+* **YooKassa** — интеграция с платёжной системой.
+
+* **Yandex Object Storage** — хранение цифровых файлов.
+
+* **Email** — отправка кодов подтверждения пользователям.
+
+## Архитектура
+
+Backend выступает связующим звеном между клиентским приложением, базой данных и внешними сервисами.
+
+Основные задачи сервера:
+
+1. Принимать и обрабатывать HTTP-запросы от frontend.
+
+2. Выполнять бизнес-логику приложения.
+
+3. Взаимодействовать с PostgreSQL через Prisma.
+
+4. Обеспечивать работу пользовательской авторизации.
+
+5. Интегрироваться с платёжным сервисом и облачным хранилищем.
+
+6. Предоставлять клиенту данные каталога и функциональность, необходимую для покупки цифровых товаров.
+
+## Требования
+
+Перед запуском убедитесь, что установлены:
+
+* Node.js совместимой версии;
+
+* npm;
+
+* PostgreSQL.
+
+Для полноценной работы приложения также потребуются учётные данные внешних сервисов, используемых проектом.
+
+## Установка и запуск
+
+**1. Клонирование репозитория**
+
+```
+git clone <repository-url>
+cd <backend-directory>
 ```
 
-## Compile and run the project
+**2. Установка зависимостей**
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+npm install
 ```
 
-## Run tests
+**3. Настройка переменных окружения**
 
-```bash
-# unit tests
-$ npm run test
+Создайте файл `.env` в корне проекта и укажите необходимые параметры подключения к базе данных и внешним сервисам.
 
-# e2e tests
-$ npm run test:e2e
+Пример конфигурации:
 
-# test coverage
-$ npm run test:cov
+```
+PORT=3000
+DATABASE_URL=
+
+MAIL_HOST=
+MAIL_PORT=
+MAIL_USER=
+MAIL_PASSWORD=
+
+SHOP_ID=
+YOOCASSA_SECRET_KEY=
+
+YANDEX_STORAGE_ACCESS_KEY=
+YANDEX_STORAGE_SECRET_KEY=
+
+DOWNLOAD_URL=
+ADMIN_API_KEY=
 ```
 
-## Deployment
+Заполните значения в соответствии с настройками своего окружения. Не добавляйте файл `.env` с реальными секретами в публичный репозиторий.
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+**4. Подготовка базы данных**
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Настройте подключение к PostgreSQL и выполните необходимые команды Prisma для синхронизации схемы и подготовки базы данных согласно конфигурации проекта.
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+**5. Запуск в режиме разработки**
+
+```
+npm run start:dev
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+По умолчанию приложение использует порт `3000`.
 
-## Resources
+## Полезные команды
 
-Check out a few resources that may come in handy when working with NestJS:
+| Команда              | Назначение                        |
+| -------------------- | --------------------------------- |
+| `npm run start:dev`  | Запуск в режиме разработки        |
+| `npm run build`      | Сборка приложения                 |
+| `npm run start:prod` | Запуск production-версии          |
+| `npm run test`       | Запуск тестов                     |
+| `npm run lint`       | Проверка и исправление стиля кода |
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Конфигурация и безопасность
 
-## Support
+Настройки базы данных, почтового сервиса, платёжной системы и файлового хранилища задаются через переменные окружения.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Для локальной разработки CORS по умолчанию разрешает запросы с `http://localhost:8080`. При развёртывании необходимо настроить разрешённые источники в соответствии с адресом frontend-приложения.
